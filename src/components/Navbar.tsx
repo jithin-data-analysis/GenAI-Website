@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+interface NavbarProps {
+  scrollToSection: (sectionId: string) => void;
+}
+
+const Navbar = ({ scrollToSection }: NavbarProps) => {
   return (
     <nav className="navbar">
       <div className="nav-content">
@@ -28,9 +32,12 @@ const Navbar = () => {
           <Link to="/team" className="nav-link">
             Team
           </Link>
-          <Link to="/contact" className="nav-link contact">
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className="nav-link contact"
+          >
             Contact Us
-          </Link>
+          </button>
         </div>
       </div>
     </nav>

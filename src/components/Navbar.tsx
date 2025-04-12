@@ -19,9 +19,6 @@ const Navbar = () => {
           <Link to="/" className="nav-link">
             Home
           </Link>
-          <Link to="/genai-solutions" className="nav-link">
-            GenAI Solutions
-          </Link>
           <Link to="/services" className="nav-link">
             Services
           </Link>

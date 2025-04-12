@@ -17,11 +17,17 @@ const ScrollToTop = () => {
 };
 
 function App() {
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    // TODO: Implement form submission logic
+    console.log('Form submitted');
   };
 
   return (
@@ -52,7 +58,7 @@ function App() {
                   </div>
                 </div>
                 <div className="hero-image">
-                  <img src="/hero-ai.jpg" alt="AI Technology" className="rounded-lg shadow-2xl" />
+                  <img src="/images/hero-ai.jpg" alt="AI Technology" className="rounded-lg shadow-2xl" />
                 </div>
               </section>
 
@@ -61,17 +67,17 @@ function App() {
                 <p className="text-xl mb-12">Our cutting-edge Generative AI solutions and services.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   <div className="p-8 bg-background/50 rounded-lg hover:bg-background/70 transition-colors">
-                    <img src="/ai-consulting.jpg" alt="AI Consulting" className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <img src="/images/ai-consulting.jpg" alt="AI Consulting" className="w-full h-48 object-cover rounded-lg mb-4" />
                     <h3 className="text-2xl font-semibold mb-4">AI Consulting</h3>
                     <p className="text-muted-foreground">Expert guidance on implementing AI solutions for your business needs.</p>
                   </div>
                   <div className="p-8 bg-background/50 rounded-lg hover:bg-background/70 transition-colors">
-                    <img src="/custom-ai.jpg" alt="Custom AI Development" className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <img src="/images/custom-ai.jpg" alt="Custom AI Development" className="w-full h-48 object-cover rounded-lg mb-4" />
                     <h3 className="text-2xl font-semibold mb-4">Custom AI Development</h3>
                     <p className="text-muted-foreground">Tailored AI solutions designed specifically for your requirements.</p>
                   </div>
                   <div className="p-8 bg-background/50 rounded-lg hover:bg-background/70 transition-colors">
-                    <img src="/ai-integration.jpg" alt="AI Integration" className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <img src="/images/ai-integration.jpg" alt="AI Integration" className="w-full h-48 object-cover rounded-lg mb-4" />
                     <h3 className="text-2xl font-semibold mb-4">AI Integration</h3>
                     <p className="text-muted-foreground">Seamless integration of AI technologies into your existing systems.</p>
                   </div>
@@ -109,12 +115,14 @@ function App() {
                         </div>
                       </div>
                     </div>
-                    <form className="space-y-6">
+                    <form onSubmit={handleContactSubmit} className="space-y-6">
                       <div>
                         <label htmlFor="name" className="block mb-2">Name</label>
                         <input
                           type="text"
                           id="name"
+                          name="name"
+                          required
                           className="w-full px-4 py-2 bg-background/50 border border-muted-foreground/30 rounded-lg focus:outline-none focus:border-primary"
                         />
                       </div>
@@ -123,6 +131,8 @@ function App() {
                         <input
                           type="email"
                           id="email"
+                          name="email"
+                          required
                           className="w-full px-4 py-2 bg-background/50 border border-muted-foreground/30 rounded-lg focus:outline-none focus:border-primary"
                         />
                       </div>
@@ -130,7 +140,9 @@ function App() {
                         <label htmlFor="message" className="block mb-2">Message</label>
                         <textarea
                           id="message"
+                          name="message"
                           rows={4}
+                          required
                           className="w-full px-4 py-2 bg-background/50 border border-muted-foreground/30 rounded-lg focus:outline-none focus:border-primary"
                         ></textarea>
                       </div>

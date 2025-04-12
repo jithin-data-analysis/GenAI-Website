@@ -1,7 +1,10 @@
 import { Button } from "./ui/button"
 import { ArrowRight, Sparkles, Code, Bot, Terminal, Code2, Cpu } from "lucide-react"
+import { useNavigate } from 'react-router-dom'
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-background via-background/95 to-primary/5">
       {/* Animated Background */}
@@ -78,11 +81,21 @@ const HeroSection = () => {
               </p>
 
               <div className="flex flex-wrap gap-4 animate-slide-up">
-                <Button size="lg" variant="gradient" className="group hover:scale-105 transition-transform">
+                <Button 
+                  size="lg" 
+                  variant="gradient" 
+                  className="group hover:scale-105 transition-transform"
+                  onClick={() => navigate('/genai-solutions')}
+                >
                   Explore GenAI Solutions
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-                <Button size="lg" variant="outline" className="group hover:scale-105 transition-transform">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="group hover:scale-105 transition-transform"
+                  onClick={() => navigate('/web-development')}
+                >
                   Our Web Development
                   <Code className="ml-2 h-4 w-4 transition-transform group-hover:rotate-12" />
                 </Button>

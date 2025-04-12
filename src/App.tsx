@@ -1,11 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import GenAISolutions from './pages/GenAISolutions';
+import Services from './pages/Services';
+import Projects from './pages/Projects';
+import Team from './pages/Team';
 import './App.css';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="app">
         <Navbar />
         <Routes>
@@ -15,24 +30,12 @@ function App() {
                 <h2>Home</h2>
                 <p>Welcome to our website. Scroll down to explore more about us.</p>
               </section>
-
-              <section id="services" className="section">
-                <h2>Services</h2>
-                <p>Discover our range of professional services.</p>
-              </section>
-
-              <section id="projects" className="section">
-                <h2>Projects</h2>
-                <p>Explore our portfolio of successful projects.</p>
-              </section>
-
-              <section id="team" className="section">
-                <h2>Team</h2>
-                <p>Meet our talented team members.</p>
-              </section>
             </main>
           } />
           <Route path="/genai-solutions" element={<GenAISolutions />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/team" element={<Team />} />
         </Routes>
       </div>
     </Router>
